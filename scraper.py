@@ -102,6 +102,8 @@ for block in blocks:
     if '.xls' in block['href']:
         title = block.text.strip().replace('.xls', '')
         link = 'https://www.lewishamandgreenwich.nhs.uk'+block['href'].strip()
+        if not block['href'].strip().startswith("/media"):
+            link = 'https://www.lewishamandgreenwich.nhs.uk/'+block['href'].strip()
         csvMth = title[:3]
         csvYr = title[-4:]
         csvMth = convert_mth_strings(csvMth.upper())
