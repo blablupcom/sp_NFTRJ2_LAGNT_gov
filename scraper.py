@@ -100,7 +100,7 @@ soup = BeautifulSoup(html, 'lxml')
 blocks = soup.find('p', text=re.compile('Expenditure over ')).find_all_next('a', href=True)
 for block in blocks:
     if '.xls' in block['href']:
-        title = block.text.strip()
+        title = block.text.strip().replace('.xls', '')
         link = 'https://www.lewishamandgreenwich.nhs.uk'+block['href'].strip()
         csvMth = title[:3]
         csvYr = title[-4:]
